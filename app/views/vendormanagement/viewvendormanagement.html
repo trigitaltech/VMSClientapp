@@ -1,0 +1,180 @@
+<div data-ng-controller="ViewVendorController">
+	<div class="paddedbottom10">
+		<ul class="breadcrumb">
+	        <li><a href="#/vendormanagement">{{'label.vendor.vendormanagement' | translate}}</a> <span class="divider">/</span></li>
+	        <li class="active">{{'label.vendor.vendordetails' | translate}}&nbsp;&nbsp;</li>
+	    </ul>
+	    <div class="pull-right">
+	      <div class="btn-group">
+	          <a data-ng-show="PermissionService.showMenu('UPDATE_VENDOR')" href="#/editvendormanagement/{{vendorData.id}}" class="btn btn-primary"><i class="icon-edit icon-white"></i> Edit</a>
+	     	  <a data-ng-hide="PermissionService.showMenu('DELETE_VENDOR') || idActiveAgreement == 'Active'" data-ng-click="deleteVendor(vendorRouteParamId)" class="btn btn-primary"><i class="icon-edit icon-white"></i> Delete</a>
+	      </div>
+	    </div>
+	</div>
+	
+	<div class="row-fluid">
+		<h3>&nbsp;&nbsp;&nbsp;{{vendorData.vendorCode}}</h3>
+		<legend>{{'label.vendordetails' | translate}}</legend>
+		<div class="span6">
+					<table class="fullwidth">
+					<tr>
+						<td width="35%"><strong>{{'label.vendor.name' | translate}}</strong></td>
+						<td width="65%">{{vendorData.vendorName}}</td>
+					</tr>
+					<tr>
+						<td><strong>{{'label.vendor.conatactname' | translate}}</strong></td>
+						<td>{{vendorData.contactName}}</td>
+					</tr>
+					<tr>
+						<td><strong>{{'label.vendor.typeentity' | translate}}</strong></td>
+						<td>{{vendorData.entityName}}</td>
+					</tr>
+					<tr>
+						<td><strong>{{'label.vendor.residentialstatus' | translate}}</strong></td>
+						<td>{{vendorData.resiStatusName}}</td>
+					</tr>
+					<tr>
+						<td><strong>{{'label.vendor.ifotherspecify' | translate}}</strong></td>
+						<td>{{vendorData.otherEntity}}</td>
+					</tr>
+					<tr>
+						<td><strong>{{'label.vendor.ifotherspecifyattach' | translate}}</strong></td>
+						<td>{{vendorData.otherResidential}}</td>
+					</tr>
+					<tr>
+						<td><strong>{{'label.vendor.emailid' | translate}}</strong></td>
+						<td>{{vendorData.emailId}}</td>
+					</tr>
+					<tr>
+						<td><strong>{{'label.vendor.mobileno' | translate}}</strong></td>
+						<td>{{vendorData.mobileNo}}</td>
+					</tr>
+					</table>
+		</div>
+				<div class="span3">
+					<table class="fullwidth">
+					<tr>
+						<td><strong>{{'label.vendor.landno' | translate}}</strong></td>
+						<td>{{vendorData.landLineNo}}</td>
+					</tr>
+					<tr>
+						<td><strong>{{'label.vendor.vendoraddress1' | translate}}</strong></td>
+						<td>{{vendorData.address1}}</td>
+					</tr>
+					<tr>
+						<td><strong>{{'label.vendor.vendoraddress2' | translate}}</strong></td>
+						<td>{{vendorData.address3}}</td>
+					</tr>
+					<tr>
+						<td><strong>{{'label.vendor.vendoraddress3' | translate}}</strong></td>
+						<td>{{vendorData.address3}}</td>
+					</tr>
+					<tr>
+						<td><strong>{{'label.city/district' | translate}}</strong></td>
+						<td>{{vendorData.city}}</td>
+					</tr>
+					<tr>
+						<td><strong>{{'label.state' | translate}}</strong></td>
+						<td>{{vendorData.state}}</td>
+					</tr>
+					<tr>
+						<td><strong>{{'label.country' | translate}}</strong></td>
+						<td>{{vendorData.country}}</td>
+					</tr>
+					<tr>
+						<td><strong>{{'label.zipcode' | translate}}</strong></td>
+						<td>{{vendorData.postalCode}}</td>
+					</tr>
+					<tr>
+						<td><strong>{{'label.vendor.fax' | translate}}</strong></td>
+						<td>{{vendorData.fax}}</td>
+					</tr>
+			
+					</table>
+				</div>
+	</div>
+	<br><br>
+	<div class="row-fluid">
+            <!-- <input data-ng-model="filterText" type="text" class="span marginbottom0px" placeholder="{{'placeholder.searchbar' | translate}}"> -->
+        <table class="table">
+        <legend>{{'label.vendorbankdetails' | translate}}</legend>
+        <thead>
+        <tr class="graybg">
+            <!-- <th>{{'label.vendor.code' | translate}}</th> -->
+            <th style="padding-left: 45px;">{{'table.bank.name' | translate}}</th>
+            <th>{{'table.bank.accno' | translate}}</th>
+            <th>{{'table.bank.branch' | translate}}</th>
+            <th>{{'table.bank.ifsccode' | translate}}</th>
+            <th>{{'table.bank.switchcode' | translate}}</th>
+            <th>{{'table.bank.accholder' | translate}}</th>
+            <th>{{'table.bank.ibancode' | translate}}</th>
+            <th>{{'table.bank.cancelled' | translate}}</th>
+            
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="pointer-main" >
+            <td class="pointer" style="padding-left: 45px;" data-ng-click="routeTobankdetails(vendorData.id)">{{vendorData.bankName}}</td>
+            <td class="pointer" data-ng-click="routeTobankdetails(vendorData.id)">{{vendorData.accountNo}}</td>
+            <td class="pointer" data-ng-click="routeTobankdetails(vendorData.id)">{{vendorData.branch}}</td>
+            <td class="pointer" data-ng-click="routeTobankdetails(vendorData.id)">{{vendorData.ifscCode}}</td>
+            <td class="pointer" data-ng-click="routeTobankdetails(vendorData.id)">{{vendorData.swiftCode}}</td>
+            <td class="pointer" data-ng-click="routeTobankdetails(vendorData.id)">{{vendorData.accountName}}</td>
+            <td class="pointer" data-ng-click="routeTobankdetails(vendorData.id)">{{vendorData.ibanCode}}</td>
+            <td class="pointer" data-ng-click="routeTobankdetails(vendorData.id)">{{vendorData.chequeNo}}</td>
+        </tr>
+        </tbody>
+    </table>
+         </div>
+         
+         <div class="row-fluid">
+         <!-- <input data-ng-model="filterText" type="text" class="span marginbottom0px" placeholder="{{'placeholder.searchbar' | translate}}"> -->
+    <table class="table">
+    <legend>{{'label.vendorotherdetails' | translate}}</legend>
+        <thead>
+        <tr class="graybg">
+            <th style="padding-left: 45px;">{{'table.vendor.permanentaccno' | translate}}</th>
+            <th>{{'table.vendor.certificateincorporation' | translate}}</th>
+            <th>{{'table.vendor.servicetaxregnno' | translate}}</th>
+            <th>{{'table.vendor.exciseno' | translate}}</th>
+            <th>{{'table.vendor.microsmall' | translate}}</th>
+            <th>{{'table.vendor.vatregnno' | translate}}</th>
+            <th>{{'table.vendor.gstregnno' | translate}}</th>
+            <th>{{'table.vendor.cstregnno' | translate}}</th>
+            
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="pointer-main" >
+            <td class="pointer" style="padding-left: 45px;" data-ng-click="routeTootherdetails(vendorData.id)">{{vendorotherData.panNo}}</td>
+            <td class="pointer" data-ng-click="routeTootherdetails(vendorData.id)">{{vendorotherData.incurCertification}}</td>
+            <td class="pointer" data-ng-click="routeTootherdetails(vendorData.id)">{{vendorotherData.stNo}}</td>
+            <td class="pointer" data-ng-click="routeTootherdetails(vendorData.id)">{{vendorotherData.msmStatus}}</td>
+            <td class="pointer" data-ng-click="routeTootherdetails(vendorData.id)">{{vendorotherData.msmRegNo}}</td>
+            <td class="pointer" data-ng-click="routeTootherdetails(vendorData.id)">{{vendorotherData.vatNo}}</td>
+            <td class="pointer" data-ng-click="routeTootherdetails(vendorData.id)">{{vendorotherData.gstNo}}</td>
+            <td class="pointer" data-ng-click="routeTootherdetails(vendorData.id)">{{vendorotherData.cstNo}}</td>
+        </tr>
+        </tbody>
+    </table>
+         
+         </div>
+         
+	
+	<script type="text/ng-template" id="deletePopupForVendor.html">
+    	<div class="modal-header silver">
+        	<h3 class="bolder">{{'label.vendordelete' | translate}}</h3>
+        </div>
+
+        <div class="modal-body style="height:60px;">
+            <h4>Are you sure?</h4>
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn btn-warning" ng-click="cancel()">{{'button.cancel' | translate}}</button>
+            <button class="btn btn-primary" ng-click="approve()">{{'label.confirm' | translate}}</button>
+        </div>
+ 	</script>
+ 	
+</div>
+          

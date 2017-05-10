@@ -1,0 +1,147 @@
+<div>
+    <ul class="breadcrumb">
+        <li><a href="#/organization">{{'link.admin.organisation' | translate}}</a> <span class="divider">/</span></li>
+        <li class="active">{{'label.vendor.vendormanagement' | translate}}</li>
+    </ul>
+</div>
+
+<div data-ng-controller="VendorController">
+ 
+    <div>
+      <tabset  style="margin-bottom: 0px;">
+      
+      <tab heading="Vendor Details" >
+       <a href="#/createvendormanagement" class="btn btn-primary pull-right" data-ng-show="PermissionService.showMenu('CREATE_TEMPLATE')"><i class="icon-plus icon-white"></i>{{'button.createvendor' | translate}}</a>
+    <input data-ng-autofocus="true" data-ng-model="filterText" data-ng-keyup="onFilter()" type="text" class="span marginbottom0px form-control" placeholder="{{ 'label.input.filterbyname' | translate }}">
+
+    <table class="table table-bordered">
+        <thead>
+        <tr class="graybg">
+            <th>{{'table.vendor.name' | translate}}</th>
+            <th>{{'table.vendor.contactname' | translate}}</th>
+            <th>{{'table.vendor.mobileno' | translate}}</th>
+            <th>{{'table.vendor.vendorlandlineno' | translate}}</th>
+            <th>{{'table.vendor.emailid' | translate}}</th>
+            <th>{{'table.vendor.state' | translate}}</th>
+            <th>{{'table.vendor.city' | translate}}</th>
+            <th>{{'table.vendor.postalcode' | translate}}</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="pointer-main" data-ng-repeat="vendorData in vendorDatas | filter:filterText">
+            <td class="pointer" data-ng-click="routeTo(vendorData.id)">{{vendorData.vendorName}}</td>
+            <td class="pointer" data-ng-click="routeTo(vendorData.id)">{{vendorData.contactName}}</td>
+            <td class="pointer" data-ng-click="routeTo(vendorData.id)">{{vendorData.mobileNo}}</td>
+            <td class="pointer" data-ng-click="routeTo(vendorData.id)">{{vendorData.landLineNo}}</td>
+            <td class="pointer" data-ng-click="routeTo(vendorData.id)">{{vendorData.emailId}}</td>
+            <td class="pointer" data-ng-click="routeTo(vendorData.id)">{{vendorData.state}}</td>
+            <td class="pointer" data-ng-click="routeTo(vendorData.id)">{{vendorData.city}}</td>
+            <td class="pointer" data-ng-click="routeTo(vendorData.id)">{{vendorData.postalCode}}</td>
+            <td>
+				<a data-ng-show="PermissionService.showMenu('UPDATE_VENDOR')" 
+					href="#/editvendormanagement/{{vendorData.id}}" data-popover="Edit Vendor" 
+					data-popover-trigger="mouseenter">
+                    <i class="icon-edit icon-white"></i>
+                </a>&nbsp;	
+                 <a data-ng-show="PermissionService.showMenu('DELETE_VENDOR')" 
+                	data-ng-click="deleteVendor(vendorData.id)" data-popover="{{'label.vendordelete' | translate}}" 
+						data-popover-trigger="mouseenter"><i class="icon-remove icon-white"></i></a>&nbsp;
+                 	<a href="#/createothervendordetails/{{vendorData.id}}" data-popover="{{'label.otherdetails' | translate}}" data-popover-trigger="mouseenter">
+                 		<i class="icon-plus-sign icon-white"></i>
+                 	</a>&nbsp; 
+			</td>
+        </tr>
+        </tbody>
+    </table>
+    
+      </tab>	
+      
+      <!-- <tab heading=" Vendor Bank Details"  active="vendorbankdetailsTab">
+       
+        <div class="row-fluid">
+            <input data-ng-model="filterText" type="text" class="span marginbottom0px" placeholder="{{'placeholder.searchbar' | translate}}">
+        <table class="table">
+        <thead>
+        <tr class="graybg">
+            <th>{{'label.vendor.code' | translate}}</th>
+            <th>{{'table.bank.name' | translate}}</th>
+            <th>{{'table.bank.accno' | translate}}</th>
+            <th>{{'table.bank.branch' | translate}}</th>
+            <th>{{'table.bank.ifsccode' | translate}}</th>
+            <th>{{'table.bank.switchcode' | translate}}</th>
+            <th>{{'table.bank.accholder' | translate}}</th>
+            <th>{{'table.bank.ibancode' | translate}}</th>
+            <th>{{'table.bank.cancelled' | translate}}</th>
+            
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="pointer-main" data-ng-repeat="vendorData in vendorDatas | filter:filterText">
+            <td class="pointer" data-ng-click="routeTobankdetails(vendorData.id)">{{vendorData.bankName}}</td>
+            <td class="pointer" data-ng-click="routeTobankdetails(vendorData.id)">{{vendorData.accountNo}}</td>
+            <td class="pointer" data-ng-click="routeTobankdetails(vendorData.id)">{{vendorData.branch}}</td>
+            <td class="pointer" data-ng-click="routeTobankdetails(vendorData.id)">{{vendorData.ifscCode}}</td>
+            <td class="pointer" data-ng-click="routeTobankdetails(vendorData.id)">{{vendorData.swiftCode}}</td>
+            <td class="pointer" data-ng-click="routeTobankdetails(vendorData.id)">{{vendorData.accountName}}</td>
+            <td class="pointer" data-ng-click="routeTobankdetails(vendorData.id)">{{vendorData.ibanCode}}</td>
+            <td class="pointer" data-ng-click="routeTobankdetails(vendorData.id)">{{vendorData.chequeNo}}</td>
+           
+        </tr>
+        </tbody>
+    </table>
+         </div>
+      </tab>
+      
+  <tab heading="Other Details"  active="otherdetailsTab">
+  		<div class="row-fluid">
+         <input data-ng-model="filterText" type="text" class="span marginbottom0px" placeholder="{{'placeholder.searchbar' | translate}}">
+    <table class="table">
+        <thead>
+        <tr class="graybg">
+            <th>{{'table.vendor.permanentaccno' | translate}}</th>
+            <th>{{'table.vendor.certificateincorporation' | translate}}</th>
+            <th>{{'table.vendor.servicetaxregnno' | translate}}</th>
+            <th>{{'table.vendor.exciseno' | translate}}</th>
+            <th>{{'table.vendor.microsmall' | translate}}</th>
+            <th>{{'table.vendor.vatregnno' | translate}}</th>
+            <th>{{'table.vendor.gstregnno' | translate}}</th>
+            <th>{{'table.vendor.cstregnno' | translate}}</th>
+            
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="pointer-main" data-ng-repeat="vendorotherData in vendorotherDatas | filter:filterText">
+            <td class="pointer" data-ng-click="routeTootherdetails(vendorotherData.id)">{{vendorotherData.panNo}}</td>
+            <td class="pointer" data-ng-click="routeTootherdetails(vendorotherData.id)">{{vendorotherData.incurCertification}}</td>
+            <td class="pointer" data-ng-click="routeTootherdetails(vendorotherData.id)">{{vendorotherData.stNo}}</td>
+            <td class="pointer" data-ng-click="routeTootherdetails(vendorotherData.id)">{{vendorotherData.msmStatus}}</td>
+            <td class="pointer" data-ng-click="routeTootherdetails(vendorotherData.id)">{{vendorotherData.msmRegNo}}</td>
+            <td class="pointer" data-ng-click="routeTootherdetails(vendorotherData.id)">{{vendorotherData.vatNo}}</td>
+            <td class="pointer" data-ng-click="routeTootherdetails(vendorotherData.id)">{{vendorotherData.gstNo}}</td>
+            <td class="pointer" data-ng-click="routeTootherdetails(vendorotherData.id)">{{vendorotherData.cstNo}}</td>
+        </tr>
+        </tbody>
+    </table>
+         
+         </div>
+      </tab> -->
+      
+    </tabset>
+    </div>
+    <script type="text/ng-template" id="deletePopupForVendor.html">
+    	<div class="modal-header silver">
+        	<h3 class="bolder">{{'label.vendordelete' | translate}}</h3>
+        </div>
+
+        <div class="modal-body style="height:60px;">
+            <h4>Are you sure?</h4>
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn btn-warning" ng-click="cancel()">{{'button.cancel' | translate}}</button>
+            <button class="btn btn-primary" ng-click="approve()">{{'label.confirm' | translate}}</button>
+        </div>
+ 	</script>
+    
+  </div>

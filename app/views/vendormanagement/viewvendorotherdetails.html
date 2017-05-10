@@ -1,0 +1,61 @@
+<div data-ng-controller="ViewVendorOtherController">
+	<div class="paddedbottom10">
+		<ul class="breadcrumb">
+	        <li><a href="#/vendormanagement">{{'label.vendor.vendormanagement' | translate}}</a> <span class="divider">/</span></li>
+	        <li class="active">{{'label.vendor.viewvendorothermanagement' | translate}}&nbsp;&nbsp;</li>
+	    </ul>
+	</div>
+	
+	<div class="row-fluid">
+		<legend>{{'label.vendorotherdetails' | translate}}</legend>
+		<div class="span6"><br>
+					<table class="fullwidth table table-bordered">
+					<tr>
+						<td width="35%"><strong>{{'label.vendor.permanentaccno' | translate}}</strong></td>
+						<td width="65%">{{vendorotherData.panNo}}</td>
+					</tr>
+					<tr>
+						<td><strong>{{'label.vendor.certificateincorporation' | translate}}</strong></td>
+						<td>{{vendorotherData.incurCertification}}</td>
+					</tr>
+					<tr>
+						<td><strong>{{'label.vendor.servicetaxregnno' | translate}}</strong></td>
+						<td>{{vendorotherData.stNo}}</td>
+					</tr>
+					<tr>
+						<td><strong>{{'label.vendor.microsmall' | translate}}</strong></td>
+						<td>{{vendorotherData.msmRegNo}}</td>
+					</tr>
+					</table>
+		</div>
+				<div class="span3"><br>
+					<table class="fullwidth table table-bordered">
+					<tr>
+						<td><strong>{{'label.vendor.exciseno' | translate}}</strong></td>
+						<td>{{vendorotherData.msmStatus}}</td>
+					</tr>
+					<tr>
+						<td><strong>{{'label.startDate' | translate}}</strong></td>
+						<td>{{vendorotherData.msmRegDate}}</td>
+					</tr>
+					<tr>
+						<td><strong>{{'label.vendor.vatregnno' | translate}}</strong></td>
+						<td>{{vendorotherData.vatNo}}</td>
+					</tr>
+					<tr>
+						<td><strong>{{'label.vendor.gstregnno' | translate}}</strong></td>
+						<td>{{vendorotherData.gstNo}}</td>
+					</tr>
+					<tr>
+						<td><strong>{{'label.vendor.cstregnno' | translate}}</strong></td>
+						<td>{{vendorotherData.cstNo}}</td>
+					</tr>
+			
+					</table>
+				</div>
+		
+			
+	</div>
+ 	
+</div>
+          

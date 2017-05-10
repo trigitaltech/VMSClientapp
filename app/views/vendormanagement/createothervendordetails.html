@@ -1,0 +1,350 @@
+<style>
+.form-horizontal .controls{
+	margin-left: 0px;
+}
+.controls1 input{
+	margin-left: 35px;
+}
+.form-horizontal .control-group{
+	 margin-bottom: 0px;
+}
+.control-group1{
+	width: 125px;
+}
+</style>
+<div>
+	<ul class="breadcrumb">
+    	<li><a href="#/vendormanagement">{{'label.vendor.vendormanagement' | translate}}</a> <span class="divider">/</span></li>
+        <li class="active">{{'label.createothervendordetails' | translate}}</li>
+    </ul>
+</div>
+
+<div data-ng-controller="CreateOtherVendorController">
+<form name="createvendorotherform" class="form-horizontal form-horizontal1 well" data-ng-controller="CreateOtherVendorController" data-ng-submit="submit()">
+	<div class="error" data-ng-show="errorStatus || errorDetails">
+		<label>{{'label.contract.error' | translate}}</label>
+		<label data-ng-show="errorStatus">{{errorStatus}}</label>
+		<label data-ng-hide="errorStatus" data-ng-repeat="error in errorDetails">{{error.code | translate}}</label>
+	    </div>
+        <fieldset>
+       <legend>{{'label.createvendor' | translate}}</legend>
+      <!-- <table class="fullwidth">		 
+		<tr>
+	      <td width="20%" >
+            <div class="control-group">
+				<label class="control-label control-label1" for="permanentAccno">{{'label.vendor.permanentaccno' | translate}}</label>
+				<div class="controls controls1">
+ 					<input type="text" id="permanentAccno" name="permanentAccno" data-ng-model="formData.panNo">
+				 </div>
+			 </div>
+          	
+          	<div class="control-group">
+				<label class="control-label control-label1" for="incorporation">{{'label.vendor.certificateincorporation' | translate}}</label>
+				<div class="controls controls1">
+ 					<input type="text" id="incorporation" name="incorporation" data-ng-model="formData.incurCertification">
+				 </div>
+			 </div>
+          	
+          	 <div class="control-group">
+				<label class="control-label control-label1" for="serviceTaxRegnno">{{'label.vendor.servicetaxregnno' | translate}}</label>
+				<div class="controls controls1">
+ 					<input type="text" id="serviceTaxRegnno" name="serviceTaxRegnno" data-ng-model="formData.stNo">
+				 </div>
+			 </div>
+      
+             <div class="control-group">
+				<label class="control-label control-label1" for="exciseNo">{{'label.vendor.exciseno' | translate}}</label>
+				<div class="controls controls1">
+ 					<input type="text" id="exciseNo" name="exciseNo" data-ng-model="formData.msmStatus">
+				 </div>
+			 </div>
+          	
+          	
+         	 
+         	<div class="control-group">
+				<label class="control-label control-label1" for="vatRegnno">{{'label.vendor.microsmall' | translate}}</label>
+				<div class="controls controls1">
+					<label class="control-label control-label1" style="width:100px;" for="microsmallYes">{{'label.vendor.microsmallyes' | translate}}</label>
+ 					<input type="text" style="width:127px;margin-left: 13px;" id="microsmallYes" name="microsmallYes" data-ng-model="formData.msmRegNo"><br>
+ 					
+				 </div>
+				 <div class="controls controls1">
+					<label class="control-label control-label1" style="width:100px;" for="microsmallNo">{{'label.vendor.microsmallno' | translate}}</label>
+ 					<input type="text" style="width:127px;margin-left: 13px;" id="microsmallNo" name="microsmallNo" data-ng-model="formData.msmRegDate">
+ 					
+				 </div>
+				 <div class="control-group">
+              		<label class="control-label control-label1" style="width:100px;">{{ 'label.startDate' | translate }}<span class="required">*</span></label>
+              		<div class="controls  controls1">
+                  	<input type="text" style="width:127px;margin-left: 13px;" data-datepicker-pop="dd MMMM yyyy" data-ng-model="formData.msmRegDate"   
+                  	 style="background-color:#FFFFFF;"  readonly/>
+              		</div>
+				  </div>
+			 </div>
+          	
+          	  <div class="control-group">
+				<label class="control-label control-label1" for="vatRegnno">{{'label.vendor.vatregnno' | translate}}</label>
+				<div class="controls controls1">
+ 					<input type="text" id="vatRegnno" name="vatRegnno" data-ng-model="formData.vatNo">
+				 </div>
+			 </div>
+			 
+			 <div class="control-group">
+				<label class="control-label control-label1" for="gstRegnno">{{'label.vendor.gstregnno' | translate}}</label>
+				<div class="controls controls1">
+ 					<input type="text" id="gstRegnno" name="gstRegnno" data-ng-model="formData.gstNo">
+				 </div>
+			 </div>
+			 
+			 <div class="control-group">
+				<label class="control-label control-label1" for="cstRegnno">{{'label.vendor.cstregnno' | translate}}</label>
+				<div class="controls controls1">
+ 					<input type="text" id="cstRegnno" name="cstRegnno" data-ng-model="formData.cstNo">
+				 </div>
+			 </div>
+			 
+          </td>
+          <td width="20%">
+          <div class="control-group">
+				<div class="controls" >
+					<input  type="file" data-ng-file-select="onFileSelect($files)">
+				</div>
+		  </div>	
+          
+           <div class="control-group">
+				<div class="controls">
+					<input type="file" data-ng-file-select="onFileSelect($files)">
+				</div>
+		  </div>
+          	
+          	<div class="control-group">
+				<div class="controls">
+					<input type="file" data-ng-file-select="onFileSelect($files)">
+				</div>
+		  </div>
+          	
+          	<div class="control-group">
+				<div class="controls">
+					<input type="file" data-ng-file-select="onFileSelect($files)">
+				</div>
+		  </div>
+          	
+          	<div class="control-group">
+				<div class="controls" >
+					<input type="file" style="margin-top:30px" data-ng-file-select="onFileSelect($files)">
+				</div>
+		  </div>
+		  
+		  <div class="control-group">
+				<div class="controls">
+					<input type="file" data-ng-file-select="onFileSelect($files)">
+				</div>
+		  </div>
+		  
+		  <div class="control-group">
+				<div class="controls">
+					<input type="file" data-ng-file-select="onFileSelect($files)">
+				</div>
+		  </div>
+		  
+		  <div class="control-group">
+				<div class="controls">
+					<input type="file" data-ng-file-select="onFileSelect($files)">
+				</div>
+		  </div>
+          	</td>
+          	</tr>
+          	<tr>
+		     <td align="center" colspan="2">
+                     <a href="#/vendormanagement"><button id="cancel" type="reset" class="btn">{{'button.cancel'| translate}}</button></a>
+                      <button id="submit" type="submit" class="btn btn-primary">{{'button.save'| translate}}</button>
+              		</td> 
+		     </tr>
+          	</table> -->
+                 
+       <table class="fullwidth">		 
+		<tr>
+	      <td width="20%" >
+            <div class="control-group">
+				<label class="control-label control-label1" for="permanentAccno">{{'label.vendor.permanentaccno' | translate}}</label>
+				<div class="controls controls1">
+ 					<input type="text" id="permanentAccno" name="permanentAccno" data-ng-model="formData.panNo">
+				 </div>
+			 </div>
+           </td> 
+           <td width="10%" >
+            <div class="control-group control-group1">
+				<div class="controls">
+					<input type="file" data-ng-file-select="onFileSelect($files)">
+				</div>
+		  </div>
+           </td> 
+           <td width="20%" colspan="2">
+                <button id="submit" type="submit" class="btn btn-primary">{{'button.save'| translate}}</button>
+           </td> 
+		 </tr>
+		 
+		 <tr>
+	      <td width="20%" >
+            <div class="control-group">
+				<label class="control-label control-label1" for="incorporation">{{'label.vendor.certificateincorporation' | translate}}</label>
+				<div class="controls controls1">
+ 					<input type="text" id="incorporation" name="incorporation" data-ng-model="formData.incurCertification">
+				 </div>
+			 </div>
+           </td> 
+           <td width="10%" >
+            <div class="control-group control-group1">
+				<div class="controls">
+					<input type="file" data-ng-file-select="onFileSelect($files)">
+				</div>
+		  </div>
+           </td> 
+           <td width="20%" colspan="2">
+                <button id="submit" type="submit" class="btn btn-primary">{{'button.save'| translate}}</button>
+           </td>  
+		 </tr>
+		 
+		  <tr>
+	      <td width="20%" >
+            <div class="control-group">
+				<label class="control-label control-label1" for="serviceTaxRegnno">{{'label.vendor.servicetaxregnno' | translate}}</label>
+				<div class="controls controls1">
+ 					<input type="text" id="serviceTaxRegnno" name="serviceTaxRegnno" data-ng-model="formData.stNo">
+				 </div>
+			 </div>
+           </td> 
+           <td width="10%" >
+            <div class="control-group control-group1">
+				<div class="controls">
+					<input type="file" data-ng-file-select="onFileSelect($files)">
+				</div>
+		  </div>
+           </td> 
+           <td width="20%" colspan="2">
+                <button id="submit" type="submit" class="btn btn-primary">{{'button.save'| translate}}</button>
+           </td>  
+		 </tr>
+		 
+		 <tr>
+	      <td width="20%" >
+            <div class="control-group">
+				<label class="control-label control-label1" for="exciseNo">{{'label.vendor.exciseno' | translate}}</label>
+				<div class="controls controls1">
+ 					<input type="text" id="exciseNo" name="exciseNo" data-ng-model="formData.msmStatus">
+				 </div>
+			 </div>
+           </td> 
+           <td width="10%" >
+            <div class="control-group control-group1">
+				<div class="controls">
+					<input type="file" data-ng-file-select="onFileSelect($files)">
+				</div>
+		  </div>
+           </td> 
+           <td width="20%" colspan="2">
+                <button id="submit" type="submit" class="btn btn-primary">{{'button.save'| translate}}</button>
+           </td>  
+		 </tr>
+		 
+		 <tr>
+	      <td width="20%" >
+            <div class="control-group">
+				<label class="control-label control-label1" for="vatRegnno">{{'label.vendor.microsmall' | translate}}</label>
+				<div class="controls controls1">
+					<label class="control-label control-label1" style="width:100px;" for="microsmallYes">{{'label.vendor.microsmallyes' | translate}}</label>
+ 					<input type="text" style="width:127px;margin-left: 13px;" id="microsmallYes" name="microsmallYes" data-ng-model="formData.msmRegNo"><br>
+ 					
+				 </div>
+				 <div class="controls controls1">
+					<label class="control-label control-label1" style="width:100px;" for="microsmallNo">{{'label.vendor.microsmallno' | translate}}</label>
+ 					<input type="text" style="width:127px;margin-left: 13px;" id="microsmallNo" name="microsmallNo" data-ng-model="formData.msmRegDate">
+ 					
+				 </div>
+			 </div>
+           </td> 
+           <td width="10%" >
+            <div class="control-group control-group1">
+				<div class="controls">
+					<input type="file" data-ng-file-select="onFileSelect($files)">
+				</div>
+		  </div>
+           </td> 
+           <td width="20%" colspan="2">
+                <button id="submit" type="submit" class="btn btn-primary">{{'button.save'| translate}}</button>
+           </td>  
+		 </tr>
+		 
+		 <tr>
+	      <td width="20%" >
+            <div class="control-group">
+				<label class="control-label control-label1" for="vatRegnno">{{'label.vendor.vatregnno' | translate}}</label>
+				<div class="controls controls1">
+ 					<input type="text" id="vatRegnno" name="vatRegnno" data-ng-model="formData.vatNo">
+				 </div>
+			 </div>
+           </td> 
+           <td width="10%" >
+            <div class="control-group control-group1">
+				<div class="controls">
+					<input type="file" data-ng-file-select="onFileSelect($files)">
+				</div>
+		  </div>
+           </td> 
+           <td width="20%" colspan="2">
+                 <button id="submit" type="submit" class="btn btn-primary">{{'button.save'| translate}}</button>
+           </td>  
+		 </tr>
+		 
+		 <tr>
+	      <td width="20%" >
+            <div class="control-group">
+				<label class="control-label control-label1" for="gstRegnno">{{'label.vendor.gstregnno' | translate}}</label>
+				<div class="controls controls1">
+ 					<input type="text" id="gstRegnno" name="gstRegnno" data-ng-model="formData.gstNo">
+				 </div>
+			 </div>
+           </td> 
+           <td width="10%" >
+            <div class="control-group control-group1">
+				<div class="controls">
+					<input type="file" data-ng-file-select="onFileSelect($files)">
+				</div>
+		  </div>
+           </td> 
+           <td width="20%" colspan="2">
+                <button id="submit" type="submit" class="btn btn-primary">{{'button.save'| translate}}</button>
+           </td>  
+		 </tr>
+		 
+		 <tr>
+	      <td width="20%" >
+            <div class="control-group">
+				<label class="control-label control-label1" for="cstRegnno">{{'label.vendor.cstregnno' | translate}}</label>
+				<div class="controls controls1">
+ 					<input type="text" id="cstRegnno" name="cstRegnno" data-ng-model="formData.cstNo">
+				 </div>
+			 </div>
+           </td> 
+           <td width="10%" >
+            <div class="control-group control-group1">
+				<div class="controls">
+					<input type="file" data-ng-file-select="onFileSelect($files)">
+				</div>
+		  </div>
+           </td> 
+           <td width="20%" colspan="2">
+                <button id="submit" type="submit" class="btn btn-primary">{{'button.save'| translate}}</button>
+           </td>  
+		 </tr><br>
+		 <tr>
+		     <td align="center" colspan="2">
+                     <a href="#/vendormanagement"><button id="cancel" type="reset" class="btn">{{'button.cancel'| translate}}</button></a>
+                      <button id="submit" type="submit" class="btn btn-primary">{{'button.save'| translate}}</button>
+              		</td> 
+		     </tr>
+        </table>
+             
+        </fieldset>
+</form>
+</div>

@@ -1,0 +1,60 @@
+<div data-ng-controller="ViewVendorBankController">
+	<div class="paddedbottom10">
+		<ul class="breadcrumb">
+	        <li><a href="#/vendormanagement">{{'label.vendor.vendormanagement' | translate}}</a> <span class="divider">/</span></li>
+	        <li class="active">{{'label.vendor.viewvendorbankdetails' | translate}}&nbsp;&nbsp;</li>
+	    </ul>
+	</div>
+	
+	<div class="row-fluid ">
+		<h3>&nbsp;&nbsp;&nbsp;{{vendorData.vendorCode}}</h3>
+		<legend>{{'label.vendorbankdetails' | translate}}</legend>
+		<div class="span6">
+					<table class="fullwidth table table-bordered " >
+					<tr>
+						<td width="35%"><strong>{{'label.vendor.bankname' | translate}}</strong></td>
+						<td width="65%">{{vendorData.bankName}}</td>
+					</tr>
+					<tr>
+						<td><strong>{{'label.vendor.bankaccountno' | translate}}</strong></td>
+						<td>{{vendorData.accountNo}}</td>
+					</tr>
+					<tr>
+						<td><strong>{{'label.vendor.bankbranchaddress' | translate}}</strong></td>
+						<td>{{vendorData.branch}}</td>
+					</tr>
+					<tr>
+						<td><strong>{{'label.vendor.ifsccode' | translate}}</strong></td>
+						<td>{{vendorData.ifscCode}}</td>
+					</tr>
+					
+					
+					</table>
+		</div>
+				<div class="span4 ">
+					<table class="fullwidth table table-bordered" >
+					<tr>
+						<td><strong>{{'label.vendor.switchcode' | translate}}</strong></td>
+						<td>{{vendorData.swiftCode}}</td>
+					</tr>
+					<tr>
+						<td><strong>{{'label.vendor.ibancode' | translate}}</strong></td>
+						<td>{{vendorData.ibanCode}}</td>
+					</tr>
+					<tr>
+						<td><strong>{{'label.vendor.accountholder' | translate}}</strong></td>
+						<td>{{vendorData.accountName}}</td>
+					</tr>
+					<tr>
+						<td><strong>{{'label.vendor.chequeno' | translate}}</strong></td>
+						<td>{{vendorData.chequeNo}}</td>
+					</tr>
+			
+					</table>
+				</div>
+		
+			
+	</div>
+ 	
+</div>
+          

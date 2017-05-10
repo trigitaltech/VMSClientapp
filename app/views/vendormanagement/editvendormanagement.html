@@ -1,0 +1,230 @@
+<div>
+	<ul class="breadcrumb">
+    	<li><a href="#/vendormanagement">{{'label.vendor.vendormanagement' | translate}}</a> <span class="divider">/</span></li>
+        <li class="active">{{'label.editvendor' | translate}}</li>
+    </ul>
+</div>
+<form name="editvendorform" class="form-horizontal well" data-ng-controller="EditVendorController" data-ng-submit="submit()">
+	<div class="error" data-ng-show="errorStatus || errorDetails">
+		<label>{{'label.contract.error' | translate}}</label>
+		<label data-ng-show="errorStatus">{{errorStatus}}</label>
+		<label data-ng-hide="errorStatus" data-ng-repeat="error in errorDetails">{{error.code | translate}}</label>
+	    </div>
+        <fieldset>
+          <legend>{{'label.editvendor' | translate}}</legend>
+
+        <table>
+         <tr>
+           <td>
+	          <div class="control-group">
+				<label class="control-label" for="vendorName">{{'label.vendor.name' | translate}}</label>
+				<div class="controls">
+ 					<input type="text" id="vendorName" name="vendorName" data-ng-model="formData.vendorName">
+				 </div>
+			  </div>
+	          <div class="control-group">
+				<label class="control-label" for="contactName">{{'label.vendor.conatactname' | translate}}</label>
+				<div class="controls">
+ 					<input type="text" id="contactName" name="contactName" data-ng-model="formData.contactName">
+				 </div>
+			 </div>
+			 
+			 <div class="control-group">
+				<label class="control-label" for="typeEntity">{{'label.vendor.typeentity' | translate}}</label>
+				<div class="controls">
+					 <select  id="typeEntity" data-ng-model="formData.entityType"  data-ng-options="entitytypedatas.id as entitytypedatas.mCodeValue for entitytypedatas in entityType">
+					 <option value="">{{'label.select.one' | translate}}</option></select>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="residentialStatus">{{'label.vendor.residentialstatus' | translate}}</label>
+				<div class="controls">
+					 <select  id="residentialStatus" data-ng-model="formData.residentialStatus"  data-ng-options="residentialstatus.id as residentialstatus.mCodeValue for residentialstatus in residentialStatus">
+					 <option value="">{{'label.select.one' | translate}}</option></select>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="ifOtherSpecify">{{'label.vendor.ifotherspecify' | translate}}</label>
+				<div class="controls">
+ 					<input type="text" id="landLineNo" name="landLineNo" data-ng-model="formData.otherEntity">
+				 </div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="ifOtherSpecifyattach">{{'label.vendor.ifotherspecifyattach' | translate}}</label>
+				<div class="controls">
+ 					<input type="text" id="ifOtherSpecifyattach" name="ifOtherSpecifyattach" data-ng-model="formData.otherResidential">
+				 </div>
+			  </div>
+			  
+			  <div class="control-group">
+   				<label class="control-label" for="vendorEmailId">{{'label.vendor.emailid' | translate}}</label>
+   					<div class="controls">
+     					<input type="text" id="vendorEmailId" name="vendorEmailId" data-ng-model="formData.emailId">
+				 </div>
+			</div>
+			 <div class="control-group">
+  				<label class="control-label" for="vendormobileNo">{{'label.vendor.mobileno' | translate}}</label>
+   					<div class="controls">
+    				<input type="text" id="vendormobileNo" name="vendormobileNo" data-ng-model="formData.mobileNo" >	 
+  					</div>
+			 </div>
+			 
+       
+     </td>
+     <td>
+     	
+			 <div class="control-group">
+				<label class="control-label" for="landLineNo">{{'label.vendor.landno' | translate}}</label>
+				<div class="controls">
+ 					<input type="text" id="landLineNo" name="landLineNo" data-ng-model="formData.landLineNo">
+				 </div>
+			 </div>
+     	<div class="control-group">
+				<label class="control-label" for="vendorAddress1">{{'label.vendor.vendoraddress1' | translate}}</label>
+				<div class="controls">
+ 					<input type="text" id="vendorAddress1" name="vendorAddress1" data-ng-model="formData.address1">
+				 </div>
+			 </div>
+			 <div class="control-group">
+				<label class="control-label" for="vendorAddress2">{{'label.vendor.vendoraddress2' | translate}}</label>
+				<div class="controls">
+ 					<input type="text" id="vendorAddress2" name="vendorAddress2" data-ng-model="formData.address2">
+				 </div>
+			 </div>
+			 <div class="control-group">
+				<label class="control-label" for="vendorAddress3">{{'label.vendor.vendoraddress3' | translate}}</label>
+				<div class="controls">
+ 					<input type="text" id="vendorAddress3" name="vendorAddress3" data-ng-model="formData.address3">
+				 </div>
+			 </div>
+      <div class="control-group">
+		<label class="control-label" for="city"> {{'label.city/district' | translate }} <span class="required">*</span> </label>
+		<div class="controls">
+			<input type="text" id="city" name="city" data-ng-model="formData.city" list="citylist" data-ng-change="getStateAndCountry(formData.city)">
+		</div>
+	</div> 
+	<datalist id="citylist">
+		
+		<option  data-ng-repeat="cityData in cities" value="{{cityData}}">
+	</datalist>
+	
+	<div class="control-group">
+		<label class="control-label" for="state"> {{'label.state' | translate }} </label>
+		<div class="controls">
+			<input type="text" id="state" data-ng-model="formData.state" readonly>
+		</div>
+	</div>
+	
+	<div class="control-group">
+		<label class="control-label" for="country"> {{'label.country' | translate }} </label>
+		<div class="controls">
+			<input type="text" id="country" data-ng-model="formData.country" readonly>
+		</div>
+	</div>
+      
+      
+      <div class="control-group">
+        <label class="control-label">{{'label.zipcode' | translate}}</label>
+        <div class="controls">
+          <input type="text" id="zipCode" data-ng-model="formData.postalCode"/>
+        </div>
+      </div>
+			 <div class="control-group">
+				<label class="control-label control-label1" for="fax">{{'label.vendor.fax' | translate}}</label>
+				<div class="controls controls1">
+ 					<input type="text" id="fax" name="fax" data-ng-model="formData.fax">
+				 </div>
+			 </div>
+     </td>
+     </tr>
+     
+     </table>
+         </fieldset>
+          <fieldset>
+          <legend>{{'label.vendoreditbankdetails' | translate}}</legend>
+			<table>
+					<tr>
+							<td>
+								<div class="control-group">
+           					 	<label class="control-label" for="bankName">{{'label.vendor.bankname' | translate}}</label>
+            					<div class="controls">
+             					 <input type="text" id="bankName" name="bankName" data-ng-model="formData.bankName" ></br>
+           						</div>
+         						</div>	
+							</td>
+							<td>
+								<div class="control-group">
+           					 	<label class="control-label" for="bankAccountno">{{'label.vendor.bankaccountno' | translate}}</label>
+            					<div class="controls">
+             					 <input type="text" id="bankAccountno" name="bankAccountno" data-ng-model="formData.accountNo" ></br>
+             					 	</div>
+         						</div>	
+							</td>
+							
+							</tr>
+							<tr>
+							<td>
+								<div class="control-group">
+            					<label class="control-label" for="bankBranchAddress">{{'label.vendor.bankbranchaddress' | translate}}</label>
+            					<div class="controls">
+              					<input type="text" id="bankBranchAddress" name="bankBranchAddress" data-ng-model="formData.branch">
+           						 </div>
+          						</div>
+							</td>
+							<td>
+								<div class="control-group">
+           					 	<label class="control-label" for="ifscCode">{{'label.vendor.ifsccode' | translate}}</label>
+            					<div class="controls">
+             					 <input type="text" id="ifscCode" name="ifscCode" data-ng-model="formData.ifscCode" ></br>	
+           						</div>
+         						</div>
+							</td>
+							</tr>
+							<tr>
+							<td>
+								<div class="control-group">
+            					<label class="control-label" for="switchCode">{{'label.vendor.switchcode' | translate}}</label>
+            					<div class="controls">
+              					<input type="text" id="switchCode" name="switchCode" data-ng-model="formData.swiftCode">
+           						 </div>
+          						</div>
+							</td>
+							<td>
+								<div class="control-group">
+            					<label class="control-label" for="ibanCode">{{'label.vendor.ibancode' | translate}}</label>
+            					<div class="controls">
+              					<input type="text" id="ibanCode" name="ibanCode" data-ng-model="formData.ibanCode">
+           						 </div>
+          						</div>
+							</td>
+							</tr>	
+							<tr>
+							<td>
+								<div class="control-group">
+            					<label class="control-label" for="accountHolder">{{'label.vendor.accountholder' | translate}}</label>
+            					<div class="controls">
+              					<input type="text" id="accountHolder" name="accountHolder" data-ng-model="formData.accountName">
+              					</div>
+          						</div>
+							</td>
+							<td>
+								<div class="control-group">
+            					<label class="control-label" for="chequeNo">{{'label.vendor.chequeno' | translate}}</label>
+            					<div class="controls">
+              					<input type="text" id="chequeNo" name="chequeNo" data-ng-model="formData.chequeNo">
+              					</div>
+          						</div>
+							</td>
+							</tr>
+  			            <tr>
+						     <td align="center" colspan="2">
+						         <a href="#/vendormanagement"><button id="cancel" type="reset" class="btn">{{'button.cancel'| translate}}</button></a>
+						          <button id="submit" type="submit" data-ng-disabled="editvendorform.$dirty && editvendorform.$invalid" class="btn btn-primary">{{'button.save'| translate}}</button>
+						  	</td>
+						 </tr>
+
+				</table> 
+                 
+			</fieldset>
+        
+</form>

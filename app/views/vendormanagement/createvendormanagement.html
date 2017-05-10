@@ -1,0 +1,315 @@
+<div>
+	<ul class="breadcrumb">
+    	<li><a href="#/vendormanagement">{{'label.vendor.vendormanagement' | translate}}</a> <span class="divider">/</span></li>
+        <li class="active">{{'label.createvendor' | translate}}</li>
+    </ul>
+</div>
+
+<div data-ng-controller="CreateVendorController">
+<form  name="createvendorform" novalidate class="form-horizontal well"  data-ng-submit="submit()">
+     
+      <div class="error" data-ng-show="errorStatus || errorDetails">
+			<label>{{'label.error' | translate}}</label>
+			<label data-ng-show="errorStatus">{{errorStatus}}</label>
+			<label data-ng-hide="errorStatus" data-ng-repeat="error in errorDetails">{{error.code | translate}}</label>
+	 </div>
+      <fieldset>
+        <legend>{{'label.createvendor' | translate}}</legend>
+       <table>
+         <tr>
+           <td>
+	          <div class="control-group">
+				<label class="control-label" for="vendorName">{{'label.vendor.name' | translate}} <span class="required">*</span></label>
+				<div class="controls">
+ 					<input type="text" id="vendorName" name="vendorName" data-ng-model="formData.vendorName" data-ng-pattern="/^[a-zA-Z0-9]*$/" required data-ng-minlength=3 data-late-Validate>
+ 					<span  data-ng-show="createvendorform.vendorName.$invalid"><br>
+	                   <small class="error" data-ng-show="createvendorform.vendorName.$error.req">
+	                      {{'label.required.field' | translate}}
+	                   </small>
+	                   <small class="error" data-ng-show="createvendorform.vendorName.$error.minlength && !createvendorform.vendorName.$error.req">Vendor Name required at least 3 characters</small>
+	               		<small class="error-row" data-ng-show="createvendorform.vendorName.$error.pattern"> {{'label.error.specialchar' | translate}} </small>
+	               </span>
+				 </div>
+			  </div>
+	          <div class="control-group">
+				<label class="control-label" for="contactName">{{'label.vendor.conatactname' | translate}} <span class="required">*</span></label>
+				<div class="controls">
+ 					<input type="text" id="contactName" name="contactName" data-ng-model="formData.contactName" data-ng-pattern="/^[a-zA-Z0-9]*$/" required data-ng-minlength=3 data-late-Validate>
+ 					<span  data-ng-show="createvendorform.contactName.$invalid"><br>
+	                   <small class="error" data-ng-show="createvendorform.contactName.$error.req">
+	                      {{'label.required.field' | translate}}
+	                   </small>
+	                   <small class="error" data-ng-show="createvendorform.contactName.$error.minlength && !createvendorform.contactName.$error.req">Contact Name required at least 3 characters</small>
+	               		<small class="error-row" data-ng-show="createvendorform.contactName.$error.pattern"> {{'label.error.specialchar' | translate}} </small>
+	               </span>
+				 </div>
+			 </div>
+			 
+			 <div class="control-group">
+				<label class="control-label" for="typeEntity">{{'label.vendor.typeentity' | translate}} <span class="required">*</span></label>
+				<div class="controls">
+					 <select  id="typeEntity" data-ng-model="formData.entityType"  data-ng-options="entitytypedatas.id as entitytypedatas.mCodeValue for entitytypedatas in entitytypedata"></select>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="ifOtherSpecify">{{'label.vendor.ifotherspecify' | translate}}</label>
+				<div class="controls">
+ 					<input type="text" id="landLineNo" name="landLineNo" data-ng-model="formData.otherEntity">
+				 </div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="residentialStatus">{{'label.vendor.residentialstatus' | translate}} <span class="required">*</span></label>
+				<div class="controls">
+					 <select data-ng-model="formData.residentialStatus"  data-ng-options="residentialstatus.id as residentialstatus.mCodeValue for residentialstatus in residentialStatus"></select>
+				</div>
+			</div>
+			
+			<!-- <div class="control-group">
+				<label class="control-label" for="ifOtherSpecifyattach">{{'label.vendor.ifotherspecifyattach' | translate}}</label>
+				<div class="controls">
+ 					<input type="text" id="ifOtherSpecifyattach" name="ifOtherSpecifyattach" data-ng-model="formData.otherResidential">
+				 </div>
+			  </div> -->
+			  <div class="control-group">
+			  <label class="control-label" for="ifOtherSpecifyattach">{{'label.vendor.ifotherspecifyattach' | translate}}</label>
+				<div class="controls" >
+					<input  type="file" data-ng-file-select="onFileSelect($files)">
+				</div>
+		  	  </div>
+			  
+			  <div class="control-group">
+   				<label class="control-label" for="vendorEmailId">{{'label.vendor.emailid' | translate}} <span class="required">*</span></label>
+   					<div class="controls">
+     					<input type="email" id="vendorEmailId" name="vendorEmailId" data-ng-model="formData.emailId">
+     					<div data-ng-show="createvendorform.vendorEmailId.$dirty && createvendorform.vendorEmailId.$invalid">
+							<small class="error" data-ng-show="createvendorform.vendorEmailId.$error.email"> {{'label.prospect.error.email' | translate}} </small>
+						</div>
+				 </div>
+			</div>
+			 <div class="control-group">
+  				<label class="control-label" for="vendormobileNo">{{'label.vendor.mobileno' | translate}} <span class="required">*</span></label>
+   					<div class="controls">
+    				<input type="text" id="vendormobileNo" name="vendormobileNo" data-ng-model="formData.mobileNo" data-ng-pattern="/^(?!0+$)(?!1+$)(?!2+$)(?!3+$)(?!4+$)(?!5+$)(?!6+$)(?!7+$)(?!8+$)(?!9+$)\d{1,15}$/" required maxlength="15" minlength="10" data-late-Validate/><br>
+    					<span data-ng-show="createvendorform.vendormobileNo.$dirty && createvendorform.vendormobileNo.$invalid"><br>
+    					<small class="error" data-ng-show="createvendorform.vendormobileNo.$error.req">
+	                      {{'label.required.field' | translate}}
+	                   </small>
+							<small class="error-row" data-ng-show="createvendorform.vendormobileNo.$error.pattern"> {{'label.prospect.error.mobileno' | translate}} </small>
+  						</span> 		 	
+			 	</div>
+			 </div>
+			 
+       
+     </td>
+     <td>
+     	
+			 <div class="control-group">
+				<label class="control-label" for="landLineNo">{{'label.vendor.landno' | translate}}</label>
+				<div class="controls">
+ 					<input type="text" id="landLineNo" name="landLineNo" data-ng-model="formData.landLineNo" data-ng-pattern="/^(?!0+$)(?!1+$)(?!2+$)(?!3+$)(?!4+$)(?!5+$)(?!6+$)(?!7+$)(?!8+$)(?!9+$)\d{1,15}$/" data-late-Validate/>
+ 					<span data-ng-show="createvendorform.landLineNo.$dirty && createvendorform.landLineNo.$invalid"><br>
+		  				<small class="error" data-ng-show="createvendorform.landLineNo.$error.pattern">{{'label.prospect.error.landline' | translate}}</small>
+					</span>
+				 </div>
+			 </div>
+     		<div class="control-group">
+				<label class="control-label" for="vendorAddress1">{{'label.vendor.vendoraddress1' | translate}} <span class="required">*</span></label>
+				<div class="controls">
+ 					<input type="text" id="vendorAddress1" name="vendorAddress1" data-ng-model="formData.address1" required data-ng-minlength=3 data-late-Validate>
+ 					<span  data-ng-show="createvendorform.vendorAddress1.$invalid"><br>
+	                   <small class="error" data-ng-show="createvendorform.vendorAddress1.$error.req">
+	                      {{'label.required.field' | translate}}
+	                   </small>
+	                   <small class="error" data-ng-show="createvendorform.vendorAddress1.$error.minlength && !createvendorform.vendorAddress1.$error.req">Vendor Address required at least 3 characters</small>
+	               </span>
+				 </div>
+			 </div>
+			 
+			 <div class="control-group">
+				<label class="control-label" for="vendorAddress2">{{'label.vendor.vendoraddress2' | translate}}</label>
+				<div class="controls">
+ 					<input type="text" id="vendorAddress2" name="vendorAddress2" data-ng-model="formData.address2">
+				 </div>
+			 </div>
+			 <div class="control-group">
+				<label class="control-label" for="vendorAddress3">{{'label.vendor.vendoraddress3' | translate}}</label>
+				<div class="controls">
+ 					<input type="text" id="vendorAddress3" name="vendorAddress3" data-ng-model="formData.address3">
+				 </div>
+			 </div>
+      <div class="control-group">
+		<label class="control-label" for="city"> {{'label.city/district' | translate }} <span class="required">*</span> </label>
+		<div class="controls">
+			<input type="text" id="city" name="city" data-ng-model="formData.city" list="citylist" data-ng-change="getStateAndCountry(formData.city)">
+		</div>
+	</div> 
+	<datalist id="citylist">
+		<!-- <option data-ng-repeat="cityData in cityDatas" value="{{cityData}}"> -->
+		<option  data-ng-repeat="cityData in cities" value="{{cityData}}">
+	</datalist>
+	
+	<div class="control-group">
+		<label class="control-label" for="state"> {{'label.state' | translate }} <span class="required">*</span></label>
+		<div class="controls">
+			<input type="text" id="state" data-ng-model="formData.state" readonly>
+		</div>
+	</div>
+	
+	<div class="control-group">
+		<label class="control-label" for="country"> {{'label.country' | translate }} <span class="required">*</span></label>
+		<div class="controls">
+			<input type="text" id="country" data-ng-model="formData.country" readonly>
+		</div>
+	</div>
+      
+      
+      <div class="control-group">
+        <label class="control-label">{{'label.zipcode' | translate}} <span class="required">*</span></label>
+        <div class="controls">
+          <input type="text" id="zipCode" name="postalCode" data-ng-model="formData.postalCode" data-ng-pattern="/^(?!0+$)(?!1+$)(?!2+$)(?!3+$)(?!4+$)(?!5+$)(?!6+$)(?!7+$)(?!8+$)(?!9+$)\d{1,15}$/" required  data-late-Validate/>
+        	<span data-ng-show="createvendorform.postalCode.$dirty && createvendorform.postalCode.$invalid"><br>
+  				<small class="error" data-ng-show="createvendorform.postalCode.$error.pattern">{{'label.prospect.error.zipcode' | translate}}</small>
+			</span>	
+        </div>
+      </div>
+     	
+			 <div class="control-group">
+				<label class="control-label control-label1" for="fax">{{'label.vendor.fax' | translate}}</label>
+				<div class="controls controls1">
+ 					<input type="text" id="fax" name="fax" data-ng-model="formData.fax" data-ng-pattern="/^(?!0+$)(?!1+$)(?!2+$)(?!3+$)(?!4+$)(?!5+$)(?!6+$)(?!7+$)(?!8+$)(?!9+$)\d{1,15}$/" data-late-Validate/>
+ 					<span data-ng-show="createvendorform.fax.$dirty && createvendorform.fax.$invalid"><br>
+		  				<small class="error" data-ng-show="createvendorform.fax.$error.pattern">{{'label.prospect.error.fax' | translate}}</small>
+					</span>
+				 </div>
+			 </div> 
+     </td>
+     </tr>
+     
+     </table>
+  </fieldset>
+  
+  <fieldset>
+          <legend>{{'label.vendorbankdetails' | translate}}</legend>
+			<table>
+					<tr>
+							<td>
+								<div class="control-group">
+           					 	<label class="control-label" for="bankName">{{'label.vendor.bankname' | translate}} <span class="required">*</span></label>
+            					<div class="controls">
+             					 <input type="text" id="bankName" name="bankName" data-ng-model="formData.bankName"  data-ng-pattern="/^[a-zA-Z0-9]*$/" required data-ng-minlength=3 data-late-Validate>
+				 					<span  data-ng-show="createvendorform.bankName.$invalid"><br>
+					                   <small class="error" data-ng-show="createvendorform.bankName.$error.req">
+					                      {{'label.required.field' | translate}}
+					                   </small>
+					                   <small class="error" data-ng-show="createvendorform.bankName.$error.minlength && !createvendorform.bankName.$error.req">Bank Name required at least 3 characters</small>
+					              	<small class="error-row" data-ng-show="createvendorform.bankName.$error.pattern"> {{'label.error.specialchar' | translate}} </small>
+					               </span>
+           						</div>
+         						</div>	
+							</td>
+							<td>
+								<div class="control-group">
+           					 	<label class="control-label" for="bankAccountno">{{'label.vendor.bankaccountno' | translate}} <span class="required">*</span></label>
+            					<div class="controls">
+             					 <input type="text" id="bankAccountno" name="bankAccountno" data-ng-model="formData.accountNo" data-ng-pattern="/^(?!0+$)(?!1+$)(?!2+$)(?!3+$)(?!4+$)(?!5+$)(?!6+$)(?!7+$)(?!8+$)(?!9+$)\d{1,15}$/" required maxlength="20" data-late-Validate/><br>
+			    					<div data-ng-show="createvendorform.bankAccountno.$dirty && createvendorform.bankAccountno.$invalid">
+			    					<small class="error" data-ng-show="createvendorform.bankAccountno.$error.req">
+				                      {{'label.required.field' | translate}}
+				                   </small>
+										<small class="error-row" data-ng-show="createvendorform.bankAccountno.$error.pattern"> {{'label.prospect.error.accno' | translate}} </small><br>
+             					 	</div>
+         						</div>	
+         						</div>
+							</td>
+							
+							</tr>
+							<tr>
+							<td>
+								<div class="control-group">
+            					<label class="control-label" for="bankBranchAddress">{{'label.vendor.bankbranchaddress' | translate}} <span class="required">*</span></label>
+            					<div class="controls">
+              					<input type="text" id="bankBranchAddress" name="bankBranchAddress" data-ng-model="formData.branch" required data-late-Validate>
+				 					<span  data-ng-show="createvendorform.bankBranchAddress.$invalid"><br>
+					                   <small class="error" data-ng-show="createvendorform.bankBranchAddress.$error.req">
+					                      {{'label.required.field' | translate}}
+					                   </small>
+					               </span>
+           						 </div>
+          						</div>
+							</td>
+							<td>
+								<div class="control-group">
+           					 	<label class="control-label" for="ifscCode">{{'label.vendor.ifsccode' | translate}} <span class="required">*</span></label>
+            					<div class="controls">
+             					 <input type="text" id="ifscCode" name="ifscCode" data-ng-model="formData.ifscCode" data-ng-pattern="/^[a-zA-Z0-9]*$/" required data-late-Validate>
+				 					<span  data-ng-show="createvendorform.ifscCode.$invalid"><br>
+					                   <small class="error" data-ng-show="createvendorform.ifscCode.$error.req">
+					                      {{'label.required.field' | translate}}
+					                   </small>
+					                   <small class="error-row" data-ng-show="createvendorform.ifscCode.$error.pattern"> {{'label.error.specialchar' | translate}} </small>
+					               </span>	
+           						</div>
+         						</div>
+							</td>
+							</tr>
+							<tr>
+							<td>
+								<div class="control-group">
+            					<label class="control-label" for="switchCode">{{'label.vendor.switchcode' | translate}}</label>
+            					<div class="controls">
+              					<input type="text" id="switchCode" name="switchCode" data-ng-model="formData.swiftCode">
+           						 </div>
+          						</div>
+							</td>
+							<td>
+								<div class="control-group">
+            					<label class="control-label" for="ibanCode">{{'label.vendor.ibancode' | translate}}</label>
+            					<div class="controls">
+              					<input type="text" id="ibanCode" name="ibanCode" data-ng-model="formData.ibanCode">
+           						 </div>
+          						</div>
+							</td>
+							</tr>	
+							<tr>
+							<td>
+								<div class="control-group">
+            					<label class="control-label" for="accountHolder">{{'label.vendor.accountholder' | translate}} <span class="required">*</span></label>
+            					<div class="controls">
+              					<input type="text" id="accountHolder" name="accountHolder" data-ng-model="formData.accountName"required data-ng-minlength=3 data-late-Validate>
+				 					<span  data-ng-show="createvendorform.accountHolder.$invalid"><br>
+					                   <small class="error" data-ng-show="createvendorform.accountHolder.$error.req">
+					                      {{'label.required.field' | translate}}
+					                   </small>
+					                   <small class="error" data-ng-show="createvendorform.accountHolder.$error.minlength && !createvendorform.accountHolder.$error.req">Account Holder name required at least 3 characters</small>
+					               </span>
+              					</div>
+          						</div>
+							</td>
+							<td>
+								<!-- <div class="control-group">
+            					<label class="control-label" for="chequeNo">{{'label.vendor.chequeno' | translate}}</label>
+            					<div class="controls">
+              					<input type="text" id="chequeNo" name="chequeNo" data-ng-model="formData.chequeNo">
+              					</div>
+          						</div> -->
+          						<div class="control-group">
+          						 <label class="control-label" for="chequeNo">{{'label.vendor.chequeno' | translate}}</label>
+									<div class="controls" >
+										<input  type="file" data-ng-file-select="onFileSelect($files)">
+									</div>
+								 </div>
+							</td>
+							</tr>
+  			             <tr>
+					     <td align="right" colspan="2">
+                        <a href="#/vendormanagement"><button id="cancel" type="reset" class="btn">{{'button.cancel'| translate}}</button></a>
+                         <button id="submit" type="submit" class="btn btn-primary">{{'button.save'| translate}}</button>
+                 		</td> 
+					     </tr>
+
+				</table> 
+                 
+</fieldset>
+  
+</form>
+</div>
