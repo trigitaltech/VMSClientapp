@@ -20,7 +20,7 @@
 </div>
 
 <div data-ng-controller="CreateOtherVendorController">
-<form name="createvendorotherform" class="form-horizontal form-horizontal1 well" data-ng-controller="CreateOtherVendorController" data-ng-submit="submit()">
+<form name="createvendorotherform" class="form-horizontal form-horizontal1 well" data-ng-submit="submit()">
 	<div class="error" data-ng-show="errorStatus || errorDetails">
 		<label>{{'label.contract.error' | translate}}</label>
 		<label data-ng-show="errorStatus">{{errorStatus}}</label>
@@ -175,12 +175,16 @@
            <td width="10%" >
             <div class="control-group control-group1">
 				<div class="controls">
-					<input type="file" data-ng-file-select="onFileSelect($files)">
+					<input type="file" data-ng-model = "fileFormData.otherfile1" ng-disabled="!formData.panNo" data-ng-file-select="onFileSelect($files)">
+					
 				</div>
 		  </div>
+		  
            </td> 
            <td width="20%" colspan="2">
-                <button id="submit" type="submit" class="btn btn-primary">{{'button.save'| translate}}</button>
+                <!-- <button id="submit" type="submit" class="btn btn-primary">{{'button.save'| translate}}</button> -->
+                <a data-ng-click="permanentAccNo()" class="btn btn-primary">
+		        <i class="icon-plus icon-white"></i>{{'button.add' | translate}}</a>
            </td> 
 		 </tr>
 		 
@@ -196,12 +200,13 @@
            <td width="10%" >
             <div class="control-group control-group1">
 				<div class="controls">
-					<input type="file" data-ng-file-select="onFileSelect($files)">
+					<input type="file" data-ng-model = "fileFormData.certificationinc" ng-disabled="!formData.incurCertification" data-ng-file-select="onFileSelect($files)">
 				</div>
 		  </div>
            </td> 
            <td width="20%" colspan="2">
-                <button id="submit" type="submit" class="btn btn-primary">{{'button.save'| translate}}</button>
+                <a data-ng-click="certificateincorp()" class="btn btn-primary">
+		        <i class="icon-plus icon-white"></i>{{'button.add' | translate}}</a>
            </td>  
 		 </tr>
 		 
@@ -217,12 +222,13 @@
            <td width="10%" >
             <div class="control-group control-group1">
 				<div class="controls">
-					<input type="file" data-ng-file-select="onFileSelect($files)">
+					<input type="file" data-ng-model = "fileFormData.serviceTaxRegnno" ng-disabled="!formData.stNo" data-ng-file-select="onFileSelect($files)">
 				</div>
 		  </div>
            </td> 
            <td width="20%" colspan="2">
-                <button id="submit" type="submit" class="btn btn-primary">{{'button.save'| translate}}</button>
+                <a data-ng-click="serviceTaxRegnno()" class="btn btn-primary">
+		        <i class="icon-plus icon-white"></i>{{'button.add' | translate}}</a>
            </td>  
 		 </tr>
 		 
@@ -238,12 +244,13 @@
            <td width="10%" >
             <div class="control-group control-group1">
 				<div class="controls">
-					<input type="file" data-ng-file-select="onFileSelect($files)">
+					<input type="file" data-ng-model = "fileFormData.exciseNo" ng-disabled="!formData.msmStatus" data-ng-file-select="onFileSelect($files)">
 				</div>
 		  </div>
            </td> 
            <td width="20%" colspan="2">
-                <button id="submit" type="submit" class="btn btn-primary">{{'button.save'| translate}}</button>
+                <a data-ng-click="exciseNo()" class="btn btn-primary">
+		        <i class="icon-plus icon-white"></i>{{'button.add' | translate}}</a>
            </td>  
 		 </tr>
 		 
@@ -266,12 +273,13 @@
            <td width="10%" >
             <div class="control-group control-group1">
 				<div class="controls">
-					<input type="file" data-ng-file-select="onFileSelect($files)">
+					<input type="file" data-ng-model = "fileFormData.microsmall" ng-disabled="!formData.msmRegNo" data-ng-file-select="onFileSelect($files)">
 				</div>
 		  </div>
            </td> 
            <td width="20%" colspan="2">
-                <button id="submit" type="submit" class="btn btn-primary">{{'button.save'| translate}}</button>
+               <a data-ng-click="microsmall()" class="btn btn-primary">
+		        <i class="icon-plus icon-white"></i>{{'button.add' | translate}}</a>
            </td>  
 		 </tr>
 		 
@@ -287,12 +295,13 @@
            <td width="10%" >
             <div class="control-group control-group1">
 				<div class="controls">
-					<input type="file" data-ng-file-select="onFileSelect($files)">
+					<input type="file" data-ng-model = "fileFormData.vatRegnno" ng-disabled="!formData.vatNo" data-ng-file-select="onFileSelect($files)">
 				</div>
 		  </div>
            </td> 
            <td width="20%" colspan="2">
-                 <button id="submit" type="submit" class="btn btn-primary">{{'button.save'| translate}}</button>
+                 <a data-ng-click="vatRegnno()" class="btn btn-primary">
+		        <i class="icon-plus icon-white"></i>{{'button.add' | translate}}</a>
            </td>  
 		 </tr>
 		 
@@ -308,12 +317,13 @@
            <td width="10%" >
             <div class="control-group control-group1">
 				<div class="controls">
-					<input type="file" data-ng-file-select="onFileSelect($files)">
+					<input type="file" data-ng-model = "fileFormData.gstRegnno" ng-disabled="!formData.gstNo" data-ng-file-select="onFileSelect($files)">
 				</div>
 		  </div>
            </td> 
            <td width="20%" colspan="2">
-                <button id="submit" type="submit" class="btn btn-primary">{{'button.save'| translate}}</button>
+                <a data-ng-click="gstRegnno()" class="btn btn-primary">
+		        <i class="icon-plus icon-white"></i>{{'button.add' | translate}}</a>
            </td>  
 		 </tr>
 		 
@@ -329,17 +339,18 @@
            <td width="10%" >
             <div class="control-group control-group1">
 				<div class="controls">
-					<input type="file" data-ng-file-select="onFileSelect($files)">
+					<input type="file" data-ng-model = "fileFormData.cstRegnno" ng-disabled="!formData.cstNo" data-ng-file-select="onFileSelect($files)">
 				</div>
 		  </div>
            </td> 
            <td width="20%" colspan="2">
-                <button id="submit" type="submit" class="btn btn-primary">{{'button.save'| translate}}</button>
+               <a data-ng-click="cstRegnno()" class="btn btn-primary">
+		        <i class="icon-plus icon-white"></i>{{'button.add' | translate}}</a>
            </td>  
 		 </tr><br>
 		 <tr>
 		     <td align="center" colspan="2">
-                     <a href="#/vendormanagement"><button id="cancel" type="reset" class="btn">{{'button.cancel'| translate}}</button></a>
+                     <a data-ng-show="PermissionService.showMenu('CREATE_VENDOROTHERDETAILS')" href="#/vendormanagement"><button id="cancel" type="reset" class="btn">{{'button.cancel'| translate}}</button></a>
                       <button id="submit" type="submit" class="btn btn-primary">{{'button.save'| translate}}</button>
               		</td> 
 		     </tr>

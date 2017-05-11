@@ -73,7 +73,9 @@
 			  <div class="control-group">
 			  <label class="control-label" for="ifOtherSpecifyattach">{{'label.vendor.ifotherspecifyattach' | translate}}</label>
 				<div class="controls" >
-					<input  type="file" data-ng-file-select="onFileSelect($files)">
+					<input  type="file" data-ng-model = "fileFormData.file1" data-ng-file-select="onFileSelect($files)">
+					<a data-ng-click="residentialProofAdd()" class="btn btn-primary">
+		            <i class="icon-plus icon-white"></i>{{'button.add' | translate}}</a>
 				</div>
 		  	  </div>
 			  
@@ -295,7 +297,10 @@
           						<div class="control-group">
           						 <label class="control-label" for="chequeNo">{{'label.vendor.chequeno' | translate}}</label>
 									<div class="controls" >
-										<input  type="file" data-ng-file-select="onFileSelect($files)">
+										<!-- <input  type="file" data-ng-model = "fileFormData.file2" data-ng-file-select="onFileSelect($files)"> -->
+										<input  type="file" data-ng-model = "fileFormData.file2" data-ng-file-select="onFileSelect($files)">
+											<a data-ng-click="chequeNoProofAdd()" class="btn btn-primary">
+		            						<i class="icon-plus icon-white"></i>{{'button.add' | translate}}</a>
 									</div>
 								 </div>
 							</td>
