@@ -21,7 +21,7 @@ body, html {
 }
 
 .well {
-    background-color: #FFFFFF;
+    background-image: url(../image/bgself2.jpg);
     border: 1px solid #E3E3E3;
     border-radius: 15px 15px 15px 15px;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
@@ -919,7 +919,7 @@ nav:hover:after{
 
 
 /* not good practice to set style on element at such broad scope*/
-.container td:first-child {    padding-left: 15px; padding-top:3px;padding-bottom:3px; font-weight: bold; color: #686767; }
+.container td:first-child {    padding-left: 15px; padding-top:3px;padding-bottom:3px; font-weight: bold; color: #2900ff; }
 .container th:first-child {    padding-left: 20px;  }
 .container td:last-child {    padding-right: 20px; padding-left: 10px;  }
 .container th:last-child {    padding-right: 20px;  }
@@ -1215,7 +1215,8 @@ td .indextdbox{
 }
 
 .boxmaxheight{
-	min-height:275px;;
+	min-height:275px;
+	background-color: rgba(0, 127, 255, 0.23);
 }
 
 .marginleft90px{
@@ -1316,11 +1317,15 @@ td .indextdbox{
 
 .container td.fontinherit:first-child{
 	font-weight: inherit;
+	/* background-color: rgba(147, 214, 58, 0.22); */
 	 
 }
 
+
 .marginround25{
 	margin: 25px;
+	color: #532d92;
+    font-weight: bold;
 }
 
 .fontsize16{
@@ -1353,7 +1358,7 @@ td .indextdbox{
 }
 
 .lightbluecolor{
-	color: #2591dc;
+	color: rgb(0, 124, 255);
 }
 .lightblue:hover,
 .lightblue:focus,
@@ -1367,7 +1372,7 @@ td .indextdbox{
 }
 
 .indexheader-span{
-	color: #2591dc;
+	color: rgb(83, 45, 159);
 	font-weight: 500;
 	margin-left: 0;
 }
