@@ -1451,7 +1451,7 @@ input[readonly],
 select[readonly],
 textarea[readonly] {
   cursor: not-allowed;
-  background-color: #eeeeee;
+  /* background-color: #eeeeee; */
 }
 
 input[type="radio"][disabled],
@@ -2079,10 +2079,10 @@ tr:nth-child(even){background-color: #f2f2f2} */
   padding: 8px 20px 8px 20px;
 }
 
-/* .table-bordered tr:nth-child(even){
-	background-color: #f2f2f2
+.table-bordered1 tr:nth-child(even){
+	
 	background-color: rgba(255, 253, 253, 0.47);
-	} */
+	}
 
 .table-bordered caption + thead tr:first-child th,
 .table-bordered caption + tbody tr:first-child th,

@@ -16,7 +16,7 @@
 		<h3>&nbsp;&nbsp;&nbsp;{{vendorData.vendorCode}}</h3>
 		<legend>{{'label.vendordetails' | translate}}</legend>
 		<div class="span6">
-					<table class="fullwidth">
+					<table class="fullwidth table table-bordered table-bordered1">
 					<tr>
 						<td width="35%"><strong>{{'label.vendor.name' | translate}}</strong></td>
 						<td width="65%">{{vendorData.vendorName}}</td>
@@ -39,7 +39,11 @@
 					</tr>
 					<tr>
 						<td><strong>{{'label.vendor.ifotherspecifyattach' | translate}}</strong></td>
-						<td>{{vendorData.otherResidential}}</td>
+						<!-- <td>{{vendorData.otherResidential}}</td> -->
+						<td>
+							<a  popover="View Uploaded File" popover-trigger="mouseenter"><i class="icon-eye-open"></i></a>
+							<a  popover="Download Uploaded File" popover-trigger="mouseenter"><i class="icon-cloud-download"></i></a>
+						</td>
 					</tr>
 					<tr>
 						<td><strong>{{'label.vendor.emailid' | translate}}</strong></td>
@@ -51,8 +55,8 @@
 					</tr>
 					</table>
 		</div>
-				<div class="span3">
-					<table class="fullwidth">
+				<div class="span4">
+					<table class="fullwidth table-bordered table table-bordered1">
 					<tr>
 						<td><strong>{{'label.vendor.landno' | translate}}</strong></td>
 						<td>{{vendorData.landLineNo}}</td>
@@ -96,7 +100,7 @@
 	<br><br>
 	<div class="row-fluid">
             <!-- <input data-ng-model="filterText" type="text" class="span marginbottom0px" placeholder="{{'placeholder.searchbar' | translate}}"> -->
-        <table class="table">
+        <table class="table table-bordered">
         <legend>{{'label.vendorbankdetails' | translate}}</legend>
         <thead>
         <tr class="graybg">
@@ -121,7 +125,11 @@
             <td class="pointer" data-ng-click="routeTobankdetails(vendorData.id)">{{vendorData.swiftCode}}</td>
             <td class="pointer" data-ng-click="routeTobankdetails(vendorData.id)">{{vendorData.accountName}}</td>
             <td class="pointer" data-ng-click="routeTobankdetails(vendorData.id)">{{vendorData.ibanCode}}</td>
-            <td class="pointer" data-ng-click="routeTobankdetails(vendorData.id)">{{vendorData.chequeNo}}</td>
+            <!-- <td class="pointer" data-ng-click="routeTobankdetails(vendorData.id)">{{vendorData.chequeNo}}</td> -->
+            <td>
+            	<a  popover="View Uploaded File" popover-trigger="mouseenter"><i class="icon-eye-open"></i></a>
+            	<a  popover="Download Uploaded File" popover-trigger="mouseenter"><i class="icon-cloud-download"></i></a>
+            </td>
         </tr>
         </tbody>
     </table>
@@ -129,7 +137,7 @@
          
          <div class="row-fluid">
          <!-- <input data-ng-model="filterText" type="text" class="span marginbottom0px" placeholder="{{'placeholder.searchbar' | translate}}"> -->
-    <table class="table">
+    <table class="table table-bordered">
     <legend>{{'label.vendorotherdetails' | translate}}</legend>
         <thead>
         <tr class="graybg">

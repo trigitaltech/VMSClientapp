@@ -6,7 +6,7 @@
     </ul>
     <h3 class="paddedleft bolder">{{'label.viewauditentry' | translate}}</h3>
     <div class="paddedleft">
-        <table width="100%" >
+        <table width="100%" class="table table-bordered table-bordered1">
             <tr>
                 <td width="35%"><strong>{{'label.id' | translate}}</strong></td>
                 <td width="65%">{{details.id}}</td>
@@ -50,7 +50,7 @@
         </table>
     </div>
     <hr/>
-    <table class="table" data-ng-show="details.commandAsJson">
+    <table class="table table-bordered" data-ng-show="details.commandAsJson">
         <thead>
         <tr class="graybg">
             <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ 'label.provisioning.commandname' | translate }}</th>
