@@ -118,7 +118,7 @@
               getTemplateDetails: {method: 'GET', params: {}},
               update: {method: 'PUT', params: {}},
           }),
-          vendorOtherDetailsResource:defineResource(apiVer + "/vendorotherdetails/:vendorId",{vendorId: '@vendorId'}, {
+          vendorOtherDetailsResource:defineResource(apiVer + "/vendorotherdetails/:vendorId",{vendorId: '@vendornameId'}, {
               get: {method: 'GET', params: {}, isArray:true},
               getTemplateDetails: {method: 'GET', params: {}},
               update: {method: 'PUT', params: {}},

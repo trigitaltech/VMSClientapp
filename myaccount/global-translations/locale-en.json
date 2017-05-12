@@ -1,6 +1,6 @@
 {
   "titles" :"----------------------------------------------------",
- 	"title.obs.selfcare"				     : "OBS SelfCare",
+ 	"title.vms.selfcare"				     : "VMS SelfCare",
  	"title.selfcare"						 : "Thor Telecom SelfCare",
  	"title.thankyou"						 : "Thank you for registering!",
  	"title.conformation.registration" 		 : "A conformation mail has been sent to your mailId.",

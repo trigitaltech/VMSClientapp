@@ -12,7 +12,7 @@
     	<div class="pull-right">
         	<a href="#/createsmtp/0" data-ng-show ="showSmtp" class="btn btn-primary"><i class="icon-plus icon-white"></i>Create SMTP</a>
     	</div>
-    <table class="table">
+    <table class="table table-bordered ">
         <thead>
         <tr class="graybg">
             <th>{{'label.form.name' | translate}}</th>
@@ -41,7 +41,7 @@
     
     <tab heading="Client Configuration"  active="clientConfigTab" select="getClientConfiguration()"> <!--  select="getConfigLookUp()" -->
 		<input data-ng-model="filterText1" type="text" class="span marginbottom0px" placeholder="{{'label.filterbyname' | translate}}">
-    	<table class="table">
+    	<table class="table table-bordered ">
         <thead>
         <tr class="graybg">
             <th>{{'label.form.name' | translate}}</th>
@@ -72,7 +72,7 @@
     
      <tab heading="Paymentgateway Configuration"  select="getpaymentgatewayData()" active="paymentConfigTab">
     	<input data-ng-model="filterText2" type="text" class="span marginbottom0px" placeholder="{{'label.filterbyname' | translate}}">
-    	<table class="table">
+    	<table class="table table-bordered ">
         <thead>
         <tr class="graybg">
             <th>{{'label.form.name' | translate}}</th>
@@ -103,7 +103,7 @@
         </div>
         <div class="row-fluid">
     <input data-ng-model="filterText" type="text" class="span marginbottom0px" placeholder="{{'placeholder.searchbar' | translate}}">
-	<table class="table">
+	<table class="table table-bordered ">
         <thead>
             <tr class="graybg">
                 <th>{{ 'table.enum.name' | translate }}</th>
