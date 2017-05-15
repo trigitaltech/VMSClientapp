@@ -3,7 +3,6 @@
 		CreateOtherVendorController : function(scope,resourceFactory, 
 				location, dateFilter,validator, $rootScope, routeParams, $upload, API_VERSION) {
 			
-			scope.cities = [];
 			scope.formData = {};
 			scope.vendorId = routeParams.id;
 			scope.formData.dateFormat = 'dd MMMM yyyy';
@@ -23,7 +22,7 @@
 		    scope.pnoOtherFormData = {};
 		    scope.permanentAccNo = function(){
 		    	
-		    	scope.pnoOtherFormData.name = "PNO"
+		    	scope.pnoOtherFormData.name = scope.formData.panNo;
 		    	$upload.upload({
 			          url: $rootScope.hostUrl+ API_VERSION +'/vendor/'+2+'/documents', 
 			          data: scope.pnoOtherFormData,
@@ -40,7 +39,7 @@
             scope.certificateincorpFormData = {};
 		    scope.certificateincorp = function(){
 		    	
-		    	scope.certificateincorpFormData.name = "CIN"
+		    	scope.certificateincorpFormData.name = scope.formData.incurCertification;
 		    	$upload.upload({
 			          url: $rootScope.hostUrl+ API_VERSION +'/vendor/'+2+'/documents', 
 			          data: scope.certificateincorpFormData,
@@ -57,7 +56,7 @@
             scope.serviceTaxRegnnoFormData = {};
 		    scope.serviceTaxRegnno = function(){
 		    	
-		    	scope.serviceTaxRegnnoFormData.name = "STR"
+		    	scope.serviceTaxRegnnoFormData.name = scope.formData.stNo;
 		    	$upload.upload({
 			          url: $rootScope.hostUrl+ API_VERSION +'/vendor/'+2+'/documents', 
 			          data: scope.serviceTaxRegnnoFormData,
@@ -74,7 +73,7 @@
             scope.exciseNoFormData = {};
 		    scope.exciseNo = function(){
 		    	
-		    	scope.exciseNoFormData.name = "ENO"
+		    	scope.exciseNoFormData.name = scope.formData.msmStatus;
 		    	$upload.upload({
 			          url: $rootScope.hostUrl+ API_VERSION +'/vendor/'+2+'/documents', 
 			          data: scope.exciseNoFormData,
@@ -91,7 +90,7 @@
             scope.microsmallFormData = {};
 		    scope.microsmall = function(){
 		    	
-		    	scope.microsmallFormData.name = "MSM"
+		    	scope.microsmallFormData.name = scope.formData.msmRegNo;
 		    	$upload.upload({
 			          url: $rootScope.hostUrl+ API_VERSION +'/vendor/'+2+'/documents', 
 			          data: scope.microsmallFormData,
@@ -108,7 +107,7 @@
             scope.vatRegnnoFormData = {};
 		    scope.vatRegnno = function(){
 		    	
-		    	scope.vatRegnnoFormData.name = "VRN"
+		    	scope.vatRegnnoFormData.name = scope.formData.vatNo;
 		    	$upload.upload({
 			          url: $rootScope.hostUrl+ API_VERSION +'/vendor/'+5+'/documents', 
 			          data: scope.vatRegnnoFormData,
@@ -125,7 +124,7 @@
             scope.gstRegnnoFormData = {};
 		    scope.gstRegnno = function(){
 		    	
-		    	scope.gstRegnnoFormData.name = "GST"
+		    	scope.gstRegnnoFormData.name = scope.formData.gstNo;
 		    	$upload.upload({
 			          url: $rootScope.hostUrl+ API_VERSION +'/vendor/'+4+'/documents', 
 			          data: scope.gstRegnnoFormData,
@@ -142,7 +141,7 @@
             scope.cstRegnnoFormData = {};
 		    scope.cstRegnno = function(){
 		    	
-		    	scope.cstRegnnoFormData.name = "CST"
+		    	scope.cstRegnnoFormData.name = scope.formData.cstNo;
 		    	$upload.upload({
 			          url: $rootScope.hostUrl+ API_VERSION +'/vendor/'+3+'/documents', 
 			          data: scope.cstRegnnoFormData,
