@@ -10,7 +10,7 @@
     <div>
       <tabset  style="margin-bottom: 0px;">
       
-      <tab heading="Service Provcode"  ng-show="$parent.PermissionService.showMenu('READ_SERVICEMAPPING')" select="getServiceMappingDetails()">
+      <!-- <tab heading="Service Provcode"  ng-show="$parent.PermissionService.showMenu('READ_SERVICEMAPPING')" select="getServiceMappingDetails()">
        <div class="pull-right btn-group">
           <a data-ng-show="PermissionService.showMenu('CREATE_SERVICEMAPPING')" href="#/createServiceMapping" class="btn btn-primary"><i class="icon-plus icon-white"></i>{{ 'button.add' | translate }}</a>
         </div>
@@ -47,9 +47,9 @@
      		 </tbody>
           </table>
           <ul class="pager">
-          	<!-- <li class="previous"><a ng-click="servicemappingdatas.previous()" href="" ng-disabled="!servicemappingdatas.hasPrevious()">&larr; Prev</a></li>
-        	<li class="next" ><a ng-click="servicemappingdatas.next()" href="" ng-disabled="!servicemappingdatas.hasNext()">Next &rarr;</a></li> -->
-        	<!-- <pagination total-items="totalServices" page="currentPage" ng-click="servicemappingdatas.next()" ng-disabled="!servicemappingdatas.hasNext()"></pagination> -->
+          	<li class="previous"><a ng-click="servicemappingdatas.previous()" href="" ng-disabled="!servicemappingdatas.hasPrevious()">&larr; Prev</a></li>
+        	<li class="next" ><a ng-click="servicemappingdatas.next()" href="" ng-disabled="!servicemappingdatas.hasNext()">Next &rarr;</a></li>
+        	<pagination total-items="totalServices" page="currentPage" ng-click="servicemappingdatas.next()" ng-disabled="!servicemappingdatas.hasNext()"></pagination>
         	
         	<pagination total-items="totalServices" ng-click="pageChanged(currentPage)" page="currentPage" items-per-page="numPerPage" 
         		max-size="10" rotate="false" num-pages="totalPages"
@@ -57,14 +57,14 @@
         	 <div style="margin-top: -52px;margin-left: 700px;"><input  style="width:25px;height:16px;" type="text" class="input-small" ng-model="gotoPageNum">
         	 <span style="font-size:23px;margin-left:-3px;"><img src="./images/slash.jpg" width="20">{{totalPages}}</span>
         	<button style="margin-bottom: 10px;width:32px;height:28px;" id="submit" type="submit" class="btn btn-primary" ng-click="setPage(gotoPageNum)">GO</button></div>
-        	<!-- <div style="margin-top: -52px;margin-left: 700px;">Go:<select data-ng-model="gotoPageNum" style="width:50px;" data-ng-change="setPage(gotoPageNum)" 
-        		data-ng-options="data.id as data.id for data in totalPagesData"></select></div> -->
+        	<div style="margin-top: -52px;margin-left: 700px;">Go:<select data-ng-model="gotoPageNum" style="width:50px;" data-ng-change="setPage(gotoPageNum)" 
+        		data-ng-options="data.id as data.id for data in totalPagesData"></select></div>
         	
 	      </ul>
          </div>
-      </tab>	
+      </tab> -->	
       
-      <tab heading=" Plan Provcode" select="getplanMappingdetails()" ng-show="$parent.PermissionService.showMenu('READ_PLANMAPPING')" active="planMappingTab">
+      <!-- <tab heading=" Plan Provcode" select="getplanMappingdetails()" ng-show="$parent.PermissionService.showMenu('READ_PLANMAPPING')" active="planMappingTab">
        <div class="pull-right btn-group">
           <a data-ng-show="PermissionService.showMenu('CREATE_PLANMAPPING')" href="#/createPlanMapping" class="btn btn-primary"><i class="icon-plus icon-white"></i>{{ 'button.add' | translate }}</a>
         </div>
@@ -91,14 +91,14 @@
                 </tr>
      		 </tbody>
           </table>
-        <!--   <ul class="pager">
+          <ul class="pager">
         			<li class="previous"><a ng-click="supplier.previous()" href="" ng-disabled="!supplier.hasPrevious()">&larr; Prev</a></li>
         			<li class="next" ><a ng-click="supplier.next()" href="" ng-disabled="!supplier.hasNext()">Next &rarr;</a></li>
-    			</ul> -->
+    			</ul>
          </div>
-      </tab>
+      </tab> -->
       
-  <tab heading="Hardware Plan" select="getHardwareMappingData()"  ng-show="$parent.PermissionService.showMenu('READ_PLANMAPPING')" active="hardwarePlanMappingTab">
+  <!-- <tab heading="Hardware Plan" select="getHardwareMappingData()"  ng-show="$parent.PermissionService.showMenu('READ_PLANMAPPING')" active="hardwarePlanMappingTab">
         <div class="pull-right btn-group">
           <a data-ng-show="PermissionService.showMenu('CREATE_PLANMAPPING')" href="#/createhardwareplanmapping" class="btn btn-primary"><i class="icon-plus icon-white"></i>{{ 'button.add' | translate }}</a>
         </div>
@@ -121,10 +121,10 @@
      		 </tbody>
           </table>
          </div>
-      </tab>
+      </tab> -->
       			
       				
-      	<tab heading="Provision Command" select="getProvisiongCommandData()" ng-show="$parent.PermissionService.showMenu('READ_PROVISIONINGSYSTEM')" active="provisioningCommandTab">
+      	<!-- <tab heading="Provision Command" select="getProvisiongCommandData()" ng-show="$parent.PermissionService.showMenu('READ_PROVISIONINGSYSTEM')" active="provisioningCommandTab">
         <div class="pull-right btn-group">
           <a data-ng-show="PermissionService.showMenu('CREATE_PROVISIONINGSYSTEM')" href="#/createProvisioningmapping" class="btn btn-primary"><i class="icon-plus icon-white"></i>{{ 'button.add' | translate }}</a>
         </div>
@@ -151,7 +151,7 @@
      		 </tbody>
           </table>
          </div>
-      </tab>	
+      </tab> -->	
       	
  <tab heading="Event Action" select="getEventActionMappingData()" ng-show="$parent.PermissionService.showMenu('READ_EVENTACTIONMAP')" active="eventActionTab">
         <div class="pull-right btn-group">
@@ -183,7 +183,7 @@
          </div>
       </tab>
       
-	<tab heading="Currency Config" select="getCurrencyConfig()" ng-show="$parent.PermissionService.showMenu('READ_CURRENCY')"  active="currencyConfigTab">
+	<!-- <tab heading="Currency Config" select="getCurrencyConfig()" ng-show="$parent.PermissionService.showMenu('READ_CURRENCY')"  active="currencyConfigTab">
         <div class="pull-right btn-group">
          <a data-ng-show="PermissionService.showMenu('UPDATE_CURRENCY')" href="#/createCurrencyMapping" class="btn btn-primary"><i class="icon-plus icon-white"></i> Edit</a>
         </div>
@@ -218,9 +218,9 @@
             </div>
         </div>  
          </div>
-      </tab>
+      </tab> -->
       
-      <tab heading="Provisioning Actions" select="getProvisioningActionData()"  active="eventValidationTab">
+      <!-- <tab heading="Provisioning Actions" select="getProvisioningActionData()"  active="eventValidationTab">
         <div class="row-fluid">
                    <input data-ng-model="filterText" type="text" class="span marginbottom0px" placeholder="{{'placeholder.searchbar' | translate}}">
         <table class="table table-bordered ">
@@ -245,7 +245,7 @@
           </table>
       
          </div>
-      </tab>
+      </tab> -->
       
       <!-- <tab heading="ENUM" select="getEnumData()" ng-show="$parent.PermissionService.showMenu('READ_PROVISIONINGSYSTEM')" active="enumTab">
         <div class="pull-right btn-group">
