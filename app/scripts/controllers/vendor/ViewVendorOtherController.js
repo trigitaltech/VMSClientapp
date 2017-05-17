@@ -5,12 +5,14 @@
         scope.vendorotherData = [];
         resourceFactory.vendorOtherDetailsResource.getTemplateDetails({vendorId: routeParams.id} , function(data) {
         	scope.vendorotherData = data;
+        	
         });
         
-        scope.downloadFile = function (panNo){
-        	scope.panNo = panNo;
+        
+        scope.downloadFile = function (id,panNo){
         	
-        	window.open($rootScope.hostUrl+ API_VERSION +'/vendor/'+ 2 +'/documents/'+ 2 +'/attachment?tenantIdentifier='+TENANT);
+            	
+        	window.open($rootScope.hostUrl+ API_VERSION +'/vendor'+ '/documents/'+id+'/attachment?tenantIdentifier='+TENANT+'&name='+panNo);
         	
         	//window.open($rootScope.hostUrl+ API_VERSION +'/vendor/'+2+'/documents' +'/vendorfile'+panNo);
         	//console.log(scope.panNo);
