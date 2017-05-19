@@ -7,9 +7,9 @@
             scope.offices = data.allowedOffices;
             scope.availableRoles = data.availableRoles;
             scope.formData = {
-              /*sendPasswordToEmail: true,*/
-              /*officeId : scope.offices[0].id,*/
-            		officeId : scope.offices[2].name,
+              sendPasswordToEmail: true,
+              officeId : scope.offices[0].id,
+            		/*officeId : scope.offices[2].name,*/
             };
         });
         
