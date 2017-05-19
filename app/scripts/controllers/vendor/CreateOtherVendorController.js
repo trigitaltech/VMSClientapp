@@ -221,25 +221,37 @@
 			scope.submit = function() {	
 				
 				this.formData.locale = $rootScope.locale.code;
-				scope.formData.fileArray = scope.fileArray;
+				//scope.formData.fileArray = scope.fileArray;
+				
+				//scope.fileArray =new Array();
 				
 				//scope.fileArray =new Array();
 				resourceFactory.vendorOtherDetailsResource.save(this.formData, function(data) {
+					//scope.filejsonObjData = [];
+					scope.fileArrayData = new Array();
 					
-		            /* if (scope.mediaassetAttributes.length > 0) {
-		              
-		                 for (var i in scope.mediaassetAttributes) {
-							                   scope.formData.mediaassetAttributes
-														.push({
-															attributeType : scope.mediaassetAttributes[i].attributeType,
-															attributeName : scope.mediaassetAttributes[i].attributeName,
-															attributevalue : scope.mediaassetAttributes[i].attributevalue,
-															attributeNickname : scope.mediaassetAttributes[i].attributeNickname,
-															attributeImage : scope.mediaassetAttributes[i].attributeImage
-														});
-		                 };
-		               }
-					
+					if (scope.fileArray.length > 0) {
+						
+						for (var i in scope.fileArray) {
+							scope.fileArrayData.push({
+													name    : scope.fileArray[i].name,
+													fileObj : scope.fileArray[i].fileObj
+							});
+						};
+					}
+					//scope.filejsonObjData.push(scope.fileArrayData);
+					console.log(scope.fileArrayData);
+					$upload.upload({
+			              url: $rootScope.hostUrl+ API_VERSION +'/vendor'+'/documents', 
+			              data: scope.fileArrayData,
+			              file: scope.file
+			            }).then(function(data) {
+			              // to fix IE not refreshing the model
+			              if (!scope.$$phase) {
+			                scope.$apply();
+			              }
+			            });
+
 					$upload.upload({
 				          url: $rootScope.hostUrl+ API_VERSION +'/vendor'+'/documents', 
 				          data: scope.cstRegnnoFormData,
@@ -249,12 +261,64 @@
 				          if (!scope.$$phase) {
 				            scope.$apply();
 				          }
-				        });*/
+				        });
 					
 					location.path('/vendormanagement');		
 					
 				});							
-			};						
+			};
+ /*scope.submit = function() { 
+                
+                this.formData.locale = $rootScope.locale.code;
+                //scope.formData.fileArray = scope.fileArray;
+                
+                //scope.fileArray =new Array();
+                
+                //scope.fileArray =new Array();
+                resourceFactory.vendorOtherDetailsResource.save(this.formData, function(data) {
+                 //scope.filejsonObjData = {};
+                 scope.fileArrayData = new Array();
+                 
+                 if (scope.fileArray.length > 0) {
+                  
+                  for (var i in scope.fileArray) {
+                   scope.fileArrayData.push({
+                         name    : scope.fileArray[i].name,
+                         fileObj : scope.fileArray[i].fileObj
+                     });
+                   
+                     scope.filejsonObjData = {};
+                     
+                         if (scope.fileObj.length > 0) {
+                          for (var j in scope.fileObj) {
+                                 scope.filejsonObjData.push({
+                                    lastModified      : scope.fileObj[j].lastModified,
+                                    lastModifiedDate  : scope.fileObj[j].lastModifiedDate,
+                                    name        : scope.fileObj[j].name,
+                                    size     : scope.fileObj[j].size,
+                                    type        : scope.fileObj[j].type
+                                 });
+                         }
+                         
+                   
+                         };
+                      }
+                  }
+                 //scope.filejsonObjData.push(scope.fileArrayData);
+                 console.log(scope.fileArrayData);
+                 $upload.upload({
+                             url: $rootScope.hostUrl+ API_VERSION +'/vendor'+'/documents', 
+                             data: scope.fileArrayData,
+                             file: scope.file
+                           }).then(function(data) {
+                             // to fix IE not refreshing the model
+                             if (!scope.$$phase) {
+                               scope.$apply();
+                             }
+                           });
+                 location.path('/vendormanagement');  
+                });       
+            };*/
 		}			
 	});
 	mifosX.ng.application.controller('CreateOtherVendorController', [ 
